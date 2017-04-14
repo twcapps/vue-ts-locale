@@ -43,7 +43,6 @@
     "pretest": "npm run build",
     "test": "ava",
     "test:watch": "ava --watch",
-    "prepublish": "npm run build",
     "release": "release-it --github.release --npm.publish --non-interactive",
     "release-minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
     "release-major": "release-it --github.release --npm.publish --non-interactive --increment major",

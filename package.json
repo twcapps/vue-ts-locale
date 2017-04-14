@@ -41,8 +41,8 @@
   "scripts": {
     "build": "gulp build",
     "pretest": "npm run build",
-    "test": "ava",
-    "test:watch": "ava --watch",
+    "test": "ava ./test/**/*.js",
+    "test:watch": "ava ./test/**/*.js --watch",
     "prepublish": "npm run build",
     "release": "release-it --github.release --npm.publish --non-interactive",
     "release-minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
@@ -62,7 +62,7 @@
   },
   "ava": {
     "files": [
-      "test/index.js"
+      "./test/**/*.js"
     ],
     "require": [
       "babel-register"

@@ -61,10 +61,10 @@ Depending on whether your clients support the `Intl` API + all relevant locales 
 ```ts
 
 import "intl";
-import "intl/locale-data/jsonp/en-GB.js";
-import "intl/locale-data/jsonp/de-DE.js";
-import "intl/locale-data/jsonp/fr-FR.js";
-import "intl/locale-data/jsonp/nl-NL.js";
+import "intl/locale-data/jsonp/en.js";
+import "intl/locale-data/jsonp/de.js";
+import "intl/locale-data/jsonp/fr.js";
+import "intl/locale-data/jsonp/es.js";
 
 ```
 
@@ -121,5 +121,17 @@ let messages =
 
 - Relative Formatting: ```{{ new Date - (1000 * 60 * 10) | format-relative }}``` => `vor 10 Minuten`
 
+
+### Use format methods outside of Vue component
+
+It is possible to use the format methods directly in TS code, but only after the plugin is initialised
+
+```
+import { formatMessage } from "vue-ts-locale";
+formatMessage("my-message-identifier");
+```
+
+
 ## Copyright
-This plugin is based on the work by https://github.com/sebastian-software/vue-locale a big thanks to the work of Sebastian.
+This plugin is based on the work of Sebastian Werner
+https://github.com/sebastian-software/vue-locale

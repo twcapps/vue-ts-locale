@@ -25,11 +25,11 @@
     }
   ],
   "license": "Apache-2.0",
-  "repository": "https://github.com/bartsidee/vue-ts-locale",
+  "repository": "https://github.com/twcapps/vue-ts-locale",
   "bugs": {
-    "url": "https://github.com/bartsidee/vue-ts-locale/issues"
+    "url": "https://github.com/twcapps/vue-ts-locale/issues"
   },
-  "homepage": "https://github.com/bartsidee/vue-ts-locale",
+  "homepage": "https://github.com/twcapps/vue-ts-locale",
   "dependencies": {
     "intl": "^1.2.5",
     "intl-format-cache": "^2.0.5",

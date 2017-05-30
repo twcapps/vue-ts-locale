@@ -2,6 +2,7 @@
 .editorconfig
 .eslintrc.js
 .gitignore
+.travis.yml
 
 gulpfile.babel.js
 node_modules/

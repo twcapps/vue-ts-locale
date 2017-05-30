@@ -1,5 +1,6 @@
 import * as Vue from "vue";
-import { kebabCase, isPlainObject, isString, isNumber, isDate, each, clamp } from "lodash";
+
+import {isObject, isString, isNumber, isDate, each } from "underscore";
 
 const MessageFormat = require("intl-messageformat");
 const RelativeFormat = require("intl-relativeformat");
@@ -11,6 +12,21 @@ const isNode = Object.prototype.toString.call(typeof process !== "undefined" ? p
 if (isNode) {
   Intl.NumberFormat = IntlPolyfill.NumberFormat;
   Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat;
+}
+
+const clamp = function(number, min, max) {
+  return Math.min(Math.max(number, min), max);
+}
+
+const kebabCase = function(string){
+  let result = string;
+  result = result.replace(/([a-z][A-Z])/g, function(match) {
+    return match.substr(0, 1) + '-' + match.substr(1, 1).toLowerCase();
+  });
+  result = result.toLowerCase();
+  result = result.replace(/[^-a-z0-9]+/g, '-');
+  result = result.replace(/^-+/, '').replace(/-$/, '');
+  return result;
 }
 
 const formats = MessageFormat.formats;
@@ -97,7 +113,7 @@ function install(Vue: any, options: any) {
       message = getCachedMessageFormat(message, locale, {});
 
     // If there is a single map parameter, use that instead of the formatOptions array
-    if (formatOptions.length === 1 && isPlainObject(formatOptions[0]))
+    if (formatOptions.length === 1 && isObject(formatOptions[0]))
       formatOptions = formatOptions[0];
 
     return message.format(formatOptions);

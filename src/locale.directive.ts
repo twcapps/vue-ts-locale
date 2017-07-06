@@ -44,6 +44,8 @@ const getCachedRelativeFormat = memoizeFormatConstructor(RelativeFormat);
 // See also: https://github.com/sebastian-software/vue-locale/issues/1#issuecomment-215396481
 const maximumFractionDigits = 18;
 
+export let getLanguage: any;
+export let setLanguage: any;
 export let formatDate: any;
 export let formatTime: any;
 export let formatNumber: any;
@@ -53,6 +55,22 @@ export let formatMessage: any;
 function install(Vue: any, options: any) {
   let { language, currency, messages } = options;
   let locale = language;
+
+  // =============================================
+  //   SET & GET LANGUAGE
+  // =============================================
+    getLanguage = function() {
+        return {language, currency, messages };
+    };
+
+    setLanguage = function(options, reloadLocation) {
+        language = options.language;
+        currency = options.currency;
+        messages = options.messages;
+        locale = language;
+        
+        if (reloadLocation) window.location.reload(true);
+    };
 
   // =============================================
   //   FORMATTER FUNCTIONS
